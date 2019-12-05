@@ -3,6 +3,8 @@ import {CommonModule} from '@angular/common';
 import {RegisterComponent} from './components/register/register.component';
 import {Route, RouterModule} from '@angular/router';
 import {ClarityModule} from '@clr/angular';
+import {FormsModule} from '@angular/forms';
+import {FlexModule} from '@angular/flex-layout';
 
 const routes: Route[] = [{
   path: '',
@@ -13,8 +15,10 @@ const routes: Route[] = [{
   declarations: [RegisterComponent],
   imports: [
     CommonModule,
+    FlexModule,
     RouterModule.forChild(routes),
-    ClarityModule
+    ClarityModule,
+    FormsModule,
   ]
 })
 export class RegisterModule {

@@ -1,12 +1,18 @@
-{{steps|json}}
-
 <ng-container *ngIf="!finished">
+
   <div>
-    aa {{steps[index].question}}aa
+    <h1>
+      {{steps[index].question}}?
+    </h1>
+    <form clrForm>
+      <clr-input-container>
+        <input clrInput type="text" [(ngModel)]="model[steps[index].field]" name="example"/>
+      </clr-input-container>
+    </form>
   </div>
   <button class="btn btn-success" (click)="next()">Suivant</button>
 </ng-container>
 
 <ng-container *ngIf="finished">
-  <button class="btn btn-danger-outline">C'est parti!</button>
+  <button class="btn btn-success-outline"  (click)=register()>C'est parti!</button>
 </ng-container>
