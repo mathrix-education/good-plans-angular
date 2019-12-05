@@ -1,21 +1,22 @@
 <header class="header-6">
   <div class="branding">
-    <a href="..." class="nav-link">
+    <a  class="nav-link" [routerLink]="['']">
       <clr-icon shape="vm-bug"></clr-icon>
       <span class="title">Good Plan</span>
     </a>
   </div>
 
   <div class="branding">
-    <a href="..." class="nav-link">
+    <a [routerLink]="['mes-bons-plans']" class="nav-link">
       <span class="title"> Mes bons plans</span>
     </a>
 
-    <a href="..." class="nav-link">
+    <a [routerLink]="['mes-bons-plans']" class="nav-link">
+      <span class="title">Profil</span>
     </a>
   </div>
 
-  <div class="header-actions">
+  <div class="header-actions" >
     <a class="nav-link nav-icon" aria-label="settings">
       <clr-icon shape="cog"></clr-icon>
     </a>
