@@ -15,6 +15,8 @@ jobs:
           echo "##[set-output name=short_sha;]$(echo ${GITHUB_SHA:0:7})"
       - name: Checkout
         uses: actions/checkout@v1
+      - name: Authenticate Docker Agent
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: Setup node
         uses: actions/setup-node@v1
         with:
@@ -23,14 +25,8 @@ jobs:
         run: npm install
       - name: Build project
         run: npx ng build --configuration=${{ steps.context.outputs.branch }}
-      #- name: Authenticate Docker Agent
-      #  run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-      - uses: azure/container-actions/docker-login@master
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker Image
-        run: docker build -t mathrix/good-plans-angular:${{ steps.context.outputs.short_sha }}
+        run: docker build -t mathrix/good-plans-angular:${{ steps.context.outputs.short_sha }} .
       - name: Push Docker Image
         run: docker push mathrix/good-plans-angular:${{ steps.context.outputs.short_sha }}
   deploy:
