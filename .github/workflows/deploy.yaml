@@ -22,7 +22,7 @@ jobs:
       - name: Install depencies
         run: npm install
       - name: Build project
-        run: ng build --configuration=${{ steps.context.outputs.branch }}
+        run: npx ng build --configuration=${{ steps.context.outputs.branch }}
       - name: Autheticate Docker
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: Build Docker Image
@@ -31,6 +31,7 @@ jobs:
         run: docker push mathrix/good-plans-angular:${{ steps.context.outputs.short_sha }}
   deploy:
     name: Deploy Docker image on Google Cloud Run
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Extract git context
