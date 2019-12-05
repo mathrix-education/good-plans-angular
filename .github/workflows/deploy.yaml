@@ -48,7 +48,7 @@ jobs:
       - name: Deploy on Google Cloud Run
         if: contains('master,dev,next', steps.extract_branch.outputs.branch)
         run: |
-          gcloud run deploy good-plans-angular-${{ steps.extract_branch.outputs.branch }} \
+          gcloud run deploy good-plans-angular-${{ steps.context.outputs.branch }} \
             --image mathrix/good-plans-angular:${{ steps.context.outputs.short_sha }} \
             --platform=managed \
             --region=europe-west1 \
