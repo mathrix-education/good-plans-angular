@@ -13,6 +13,7 @@ import {routes} from './routes';
 import { GoodPlanComponent } from './components/good-plan/good-plan.component';
 import { FirstPageComponent } from './components/first-page/first-page.component';
 import { RootComponent } from './components/root/root.component';
+import { GoodPlanModalComponent } from './components/good-plan-modal/good-plan-modal.component';
 
 
 
@@ -25,7 +26,8 @@ import { RootComponent } from './components/root/root.component';
     ProfilePageComponent,
     GoodPlanComponent,
     FirstPageComponent,
-    RootComponent
+    RootComponent,
+    GoodPlanModalComponent
   ],
   imports: [
     BrowserModule,

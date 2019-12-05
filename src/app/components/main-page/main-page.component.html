@@ -1,7 +1,5 @@
-
-
 <div class="clr-col-6 clr-align-content-center">
-  <div class="card">
+  <div class="card" (click)="openPopup()">
     <div class="card-header">
       Bon plan du jour
     </div>
@@ -25,3 +23,27 @@
     </div>
   </div>
 </div>
+
+
+<clr-modal [(clrModalOpen)]="opened" [clrModalSize]="'xl'">
+  <h3 class="modal-title">Mon bon plan</h3>
+  <div class="modal-body">
+
+    <h3>En bref:</h3>
+    <div>Avoir la carte jeune pour économiser 50% sur les trajets de train SNCF.</div>
+
+    <h3>Les conditions:</h3>
+    <span class="label label-info">- de 25 ans</span>
+    <span class="label label-success">Pas de condtion de ressources</span>
+
+
+    <h3>Temps d'attente</h3>
+    <div>5 minutes</div>
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="opened = false">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="opened = false">Ok</button>
+  </div>
+</clr-modal>
