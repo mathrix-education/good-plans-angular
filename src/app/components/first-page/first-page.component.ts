@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-first-page',
   templateUrl: './first-page.component.html',
   styleUrls: ['./first-page.component.scss']
 })
-export class FirstPageComponent implements OnInit {
+export class FirstPageComponent {
+  opened = false;
 
-  constructor() { }
+  form = {username: '', password: ''};
 
-  ngOnInit() {
+
+  login() {
+    console.log(this.form);
   }
+
 
 }

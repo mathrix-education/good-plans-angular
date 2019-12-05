@@ -6,6 +6,7 @@ import {VisionComponent} from './components/vision/vision.component';
 import {GoodPlanComponent} from './components/good-plan/good-plan.component';
 import {AppComponent} from './components/app/app.component';
 import {FirstPageComponent} from './components/first-page/first-page.component';
+import {LoginComponent} from './components/login/login.component';
 
 export const routes: Route[] = [
 
@@ -28,10 +29,13 @@ export const routes: Route[] = [
         path: 'bon-plan/:id',
         component: GoodPlanComponent
       },
-
       {
         path: 'vision', component: VisionComponent
       },
+      {
+        path: 'login',
+        component: LoginComponent
+      }
     ]
   },
   {path: '', redirectTo: 'app', pathMatch: 'full'}

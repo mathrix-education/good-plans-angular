@@ -5,6 +5,12 @@
       <span class="title">Bons plans</span>
     </a>
   </div>
+
+  <div class="header-actions">
+    <a class="nav-link nav-icon" aria-label="settings">
+      <clr-icon shape="login" (click)="opened = true"></clr-icon>
+    </a>
+  </div>
 </header>
 
 <div class="main-container p-2" fxLayout="column" fxLayoutAlign="center center">
@@ -16,9 +22,47 @@
     </div>
 
 
-      <h2>Pas le temps de chercher ? On le fait pour toi !</h2>
+    <h2>Pas le temps de chercher ? On le fait pour toi !</h2>
 
-      <a class="btn btn-primary" [routerLink]="['/inscription']">Commencer</a>
+    <a class="btn btn-primary" [routerLink]="['/inscription']">Commencer</a>
   </div>
 
 </div>
+
+
+<clr-modal [(clrModalOpen)]="opened">
+  <div class="modal-title">Login</div>
+  <div class="modal-body" fxLayoutAlign="center center">
+
+
+    <form clrForm>
+      <clr-input-container>
+        <input type="text" name="username" clrInput placeholder="email" [(ngModel)]="form.username"/>
+      </clr-input-container>
+
+      <clr-password-container>
+        <input type="password" name="password" clrPassword placeholder="Mot de passe" [(ngModel)]="form.password"/>
+      </clr-password-container>
+    </form>
+  </div>
+
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="opened = false">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="login()">Ok</button>
+  </div>
+</clr-modal>
+
+
+<!--<div class="login-group">-->
+<!--  <clr-input-container>-->
+<!--    <label class="clr-sr-only">Username</label>-->
+<!--    <input type="text" name="username" clrInput placeholder="Username" [(ngModel)]="form.username"/>-->
+<!--  </clr-input-container>-->
+<!--  <clr-password-container>-->
+<!--    <label class="clr-sr-only">Password</label>-->
+<!--    <input type="password" name="password" clrPassword placeholder="Password" [(ngModel)]="form.password"/>-->
+<!--  </clr-password-container>-->
+<!--  <button type="submit" class="btn btn-primary">Continuer</button>-->
+<!--  <a href="javascript://" class="signup">S'inscrire</a>-->
+<!--</div>-->

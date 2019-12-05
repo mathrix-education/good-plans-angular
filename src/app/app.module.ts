@@ -10,12 +10,12 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import {ProfilePageComponent} from './components/profile-page/profile-page.component';
 import {routes} from './routes';
-import { GoodPlanComponent } from './components/good-plan/good-plan.component';
-import { FirstPageComponent } from './components/first-page/first-page.component';
-import { RootComponent } from './components/root/root.component';
-import { GoodPlanModalComponent } from './components/good-plan-modal/good-plan-modal.component';
-
-
+import {GoodPlanComponent} from './components/good-plan/good-plan.component';
+import {FirstPageComponent} from './components/first-page/first-page.component';
+import {RootComponent} from './components/root/root.component';
+import {GoodPlanModalComponent} from './components/good-plan-modal/good-plan-modal.component';
+import { LoginComponent } from './components/login/login.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -27,14 +27,16 @@ import { GoodPlanModalComponent } from './components/good-plan-modal/good-plan-m
     GoodPlanComponent,
     FirstPageComponent,
     RootComponent,
-    GoodPlanModalComponent
+    GoodPlanModalComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     ClarityModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [RootComponent]
