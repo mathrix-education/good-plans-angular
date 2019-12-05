@@ -1,18 +1,20 @@
-<ng-container *ngIf="!finished">
+<div class="background">
 
-  <div>
+  <div class="full" fxLayout="column" fxLayoutAlign="space-around center">
     <h1>
-      {{steps[index].question}}?
+      {{steps[index].question}}
     </h1>
-    <form clrForm>
-      <clr-input-container>
-        <input clrInput type="text" [(ngModel)]="model[steps[index].field]" name="example"/>
-      </clr-input-container>
-    </form>
-  </div>
-  <button class="btn btn-success" (click)="next()">Suivant</button>
-</ng-container>
+    <div *ngIf="!finished">
+      <form class="clr-form clr-form-compact">
+        <clr-input-container>
+          <label>
+            <input clrInput type="text" [(ngModel)]="model[steps[index].field]" name="example"/>
+          </label>
+        </clr-input-container>
+      </form>
+    </div>
 
-<ng-container *ngIf="finished">
-  <button class="btn btn-success-outline"  (click)=register()>C'est parti!</button>
-</ng-container>
+    <button class="btn btn-block btn-success"
+            (click)="next()">{{finished ? 'Continuer' : 'Suivant'}}</button>
+  </div>
+</div>

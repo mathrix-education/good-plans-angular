@@ -16,16 +16,20 @@ export class RegisterComponent {
 
   steps = [
     {
-      question: 'Quel est ton prénom',
+      question: 'Quel est ton prénom?',
       field: 'last_name'
     },
     {
-      question: 'Quel est ton nom',
+      question: 'Quel est ton nom?',
       field: 'first_name'
     },
     {
-      question: 'Quand est tu né',
+      question: 'Quand est tu né?',
       field: 'birth_date'
+    },
+    {
+      question: 'C\'est parti!',
+      field: ''
     }
   ];
 
@@ -33,10 +37,11 @@ export class RegisterComponent {
   }
 
   next() {
-    this.index++;
-    if (this.index >= this.steps.length) {
-      this.finished = true;
-      console.log(this.model);
+    if (!this.finished) {
+      this.index++;
+      if (this.index >= this.steps.length - 1) {
+        this.finished = true;
+      }
     }
   }
 
