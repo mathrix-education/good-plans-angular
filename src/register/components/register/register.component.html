@@ -5,7 +5,21 @@
     </h1>
     <div *ngIf="!finished">
       <form class="clr-form clr-form-compact">
-        <clr-input-container>
+
+        <div fxFlex="start center" *ngIf="steps[index].field==='city'">
+          <button class="btn btn-primary" (click)="saveCity('paris')">Paris</button>
+          <button class="btn btn-primary" (click)="saveCity('grenoble')">Grenoble</button>
+        </div>
+
+
+        <form clrForm *ngIf="steps[index].field==='birth_date'">
+          <clr-date-container>
+            <input type="date" clrDate name="demo" [(ngModel)]="model.birth_date">
+          </clr-date-container>
+        </form>
+
+
+        <clr-input-container *ngIf="steps[index].field!='city' && steps[index].field!='birth_date'  ">
           <label>
             <input clrInput type="text" [(ngModel)]="model[steps[index].field]" name="example"/>
           </label>
@@ -13,7 +27,7 @@
       </form>
     </div>
 
-    <button class="btn btn-block btn-success"
-            (click)="next()">{{finished ? 'Continuer' : 'Suivant'}}</button>
+    <button class="btn btn-block btn-success" *ngIf="steps[index].field!=='city'"
+            (click)=" finished? register() : next()">{{finished ? 'Continuer' : 'Suivant'}}</button>
   </div>
 </div>
