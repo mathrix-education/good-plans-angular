@@ -19,12 +19,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: Install depencies
+      - name: Install dependencies
         run: npm install
       - name: Build project
         run: npx ng build --configuration=${{ steps.context.outputs.branch }}
-      - name: Autheticate Docker
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      #- name: Authenticate Docker Agent
+      #  run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      - uses: azure/container-actions/docker-login@master
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker Image
         run: docker build -t mathrix/good-plans-angular:${{ steps.context.outputs.short_sha }}
       - name: Push Docker Image
