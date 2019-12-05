@@ -15,20 +15,32 @@ jobs:
           echo "##[set-output name=short_sha;]$(echo ${GITHUB_SHA:0:7})"
       - name: Checkout
         uses: actions/checkout@v1
+      - name: Authenticate Docker Agent
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: Setup node
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: Install depencies
+      - name: Install dependencies
         run: npm install
       - name: Build project
         run: npx ng build --configuration=${{ steps.context.outputs.branch }}
-      - name: Autheticate Docker
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      - name: Setup Google Cloud SDK
+        uses: mathrix-education/setup-gcloud@0.1.2
+        with:
+          project: ${{ secrets.GCLOUD_PROJECT }}
+          service-account-key: ${{ secrets.GCLOUD_AUTH }}
+          configure-docker: true
       - name: Build Docker Image
-        run: docker build -t mathrix/good-plans-angular:${{ steps.context.outputs.short_sha }}
-      - name: Push Docker Image
-        run: docker push mathrix/good-plans-angular:${{ steps.context.outputs.short_sha }}
+        run: docker build -t eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/good-plans-angular:${{ steps.context.outputs.short_sha }} .
+      - name: Push Docker Image to Google Cloud Container Registry
+        run: docker push eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/good-plans-angular:${{ steps.context.outputs.short_sha }}
+      - name: Push to DockerHub
+        run: |
+          docker tag \
+            eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/good-plans-angular:${{ steps.context.outputs.short_sha }} \
+            mathrix/good-plans-angular:${{ steps.context.outputs.short_sha }}
+          docker push mathrix/good-plans-angular:${{ steps.context.outputs.short_sha }}
   deploy:
     name: Deploy Docker image on Google Cloud Run
     needs: [build]
@@ -48,8 +60,8 @@ jobs:
       - name: Deploy on Google Cloud Run
         if: contains('master,dev,next', steps.extract_branch.outputs.branch)
         run: |
-          gcloud run deploy good-plans-angular-${{ steps.extract_branch.outputs.branch }} \
-            --image mathrix/good-plans-angular:${{ steps.context.outputs.short_sha }} \
+          gcloud run deploy good-plans-angular-${{ steps.context.outputs.branch }} \
+            --image eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/good-plans-angular:${{ steps.context.outputs.short_sha }} \
             --platform=managed \
             --region=europe-west1 \
             --allow-unauthenticated
