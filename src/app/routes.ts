@@ -5,11 +5,16 @@ import {RegisterComponent} from '../register/components/register/register.compon
 import {VisionComponent} from './components/vision/vision.component';
 import {GoodPlanComponent} from './components/good-plan/good-plan.component';
 import {AppComponent} from './components/app/app.component';
+import {FirstPageComponent} from './components/first-page/first-page.component';
 
 export const routes: Route[] = [
+
   {
-    path: 'mes-bons-plans',
-    component: MainPageComponent
+    path: '', component: FirstPageComponent
+  },
+  {
+    path: 'inscription',
+    component: RegisterComponent
   },
   {
     path: 'app',
@@ -23,10 +28,7 @@ export const routes: Route[] = [
         path: 'bon-plan/:id',
         component: GoodPlanComponent
       },
-      {
-        path: 'inscription',
-        component: RegisterComponent
-      },
+
       {
         path: 'vision', component: VisionComponent
       },

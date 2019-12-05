@@ -1,1 +1,24 @@
-<p>first-page works!</p>
+<header class="header-6">
+  <div class="branding">
+    <a class="nav-link" [routerLink]="['/']">
+      <img class="logo" src="/assets/logo.png  " alt="Logo">
+      <span class="title">Bons plans</span>
+    </a>
+  </div>
+</header>
+
+<div class="main-container p-2" fxLayout="column" fxLayoutAlign="center center">
+  <h1 class="mb-8">Les bons plans sont partout, il suffit de chercher !</h1>
+
+  <div fxLayout="column" fxLayoutAlign="stretch center">
+    <div class="p-2">
+      <app-good-plan></app-good-plan>
+    </div>
+
+
+      <h2>Pas le temps de chercher ? On le fait pour toi !</h2>
+
+      <a class="btn btn-primary" [routerLink]="['/inscription']">Commencer</a>
+  </div>
+
+</div>
