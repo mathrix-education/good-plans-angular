@@ -11,6 +11,8 @@ import {MainPageComponent} from './components/main-page/main-page.component';
 import {ProfilePageComponent} from './components/profile-page/profile-page.component';
 import {routes} from './routes';
 import { GoodPlanComponent } from './components/good-plan/good-plan.component';
+import { FirstPageComponent } from './components/first-page/first-page.component';
+import { RootComponent } from './components/root/root.component';
 
 
 
@@ -21,7 +23,9 @@ import { GoodPlanComponent } from './components/good-plan/good-plan.component';
     VisionComponent,
     MainPageComponent,
     ProfilePageComponent,
-    GoodPlanComponent
+    GoodPlanComponent,
+    FirstPageComponent,
+    RootComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,7 @@ import { GoodPlanComponent } from './components/good-plan/good-plan.component';
     FlexLayoutModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [RootComponent]
 })
 export class AppModule {
 }
