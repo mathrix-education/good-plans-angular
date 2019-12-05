@@ -10,6 +10,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import {ProfilePageComponent} from './components/profile-page/profile-page.component';
 import {routes} from './routes';
+import { GoodPlanComponent } from './components/good-plan/good-plan.component';
 
 
 
@@ -19,7 +20,8 @@ import {routes} from './routes';
     AppComponent,
     VisionComponent,
     MainPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    GoodPlanComponent
   ],
   imports: [
     BrowserModule,
