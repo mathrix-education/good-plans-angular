@@ -3,6 +3,8 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {Route, RouterModule} from '@angular/router';
+import {ClarityModule} from '@clr/angular';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 export const routes: Route[] = [{
@@ -12,6 +14,10 @@ export const routes: Route[] = [{
   {
     path: 'mon-profil',
     loadChildren: () => import('./../profile-tab/profile-tab.module').then(m => m.ProfileTabModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./../register/register.module').then(m => m.RegisterModule)
   }
 ];
 
@@ -21,7 +27,9 @@ export const routes: Route[] = [{
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ClarityModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
