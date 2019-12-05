@@ -9,14 +9,15 @@ export const routes: Route[] = [{
   component: MainPageComponent
 },
   {
-    path: 'mon-profil',
+    path: 'profil',
     component: ProfilePageComponent
   },
   {
-    path: 'register',
+    path: 'inscription',
     component: RegisterComponent
   },
   {
     path: 'vision', component: VisionComponent
-  }
+  },
+  {path: '', redirectTo: 'mes-bons-plans', pathMatch: 'full'},
 ];

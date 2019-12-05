@@ -1,22 +1,26 @@
 <header class="header-6">
   <div class="branding">
-    <a  class="nav-link" [routerLink]="['']">
+    <a class="nav-link" [routerLink]="['']">
       <clr-icon shape="vm-bug"></clr-icon>
       <span class="title">Good Plan</span>
     </a>
   </div>
 
-  <div class="branding">
-    <a [routerLink]="['mes-bons-plans']" class="nav-link">
-      <span class="title"> Mes bons plans</span>
+  <div class="header-nav">
+    <a [routerLink]="['mes-bons-plans']" class="nav-link" routerLinkActive="active">
+      <span class="nav-text">Mes bons plans</span>
     </a>
 
-    <a [routerLink]="['mes-bons-plans']" class="nav-link">
-      <span class="title">Profil</span>
+    <a [routerLink]="['profil']" class="nav-link" routerLinkActive="active">
+      <span class="nav-text">Profil</span>
+    </a>
+
+    <a [routerLink]="['vision']" class="nav-link" routerLinkActive="active">
+      <span class="nav-text">Vision</span>
     </a>
   </div>
 
-  <div class="header-actions" >
+  <div class="header-actions">
     <a class="nav-link nav-icon" aria-label="settings">
       <clr-icon shape="cog"></clr-icon>
     </a>
