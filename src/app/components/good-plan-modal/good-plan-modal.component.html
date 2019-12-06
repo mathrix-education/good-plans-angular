@@ -1,20 +1,22 @@
 <div class="main" [ngSwitch]="step">
   <section *ngSwitchCase="1">
-<div fxLayout="row" fxLayoutGap="40px">
-    <div>
-      <h1>Etapes</h1>
+    <div fxLayout="row" fxLayoutGap="40px">
+      <div>
+        <h1>Etapes</h1>
 
-      <h2>1. Prépare ta carte d'identité</h2>
+        <h2>1. Prépare ta carte d'identité</h2>
 
-      <h2>2. Inscris-toi avec ce lien <a href="https://oui.sncf" target="_blank"></a><clr-icon shape="link" size="36"></clr-icon></h2>
+        <h2>2. Inscris-toi avec ce lien <a href="https://oui.sncf" target="_blank"></a>
+          <clr-icon shape="link" size="36"></clr-icon>
+        </h2>
 
-      <button class="btn btn-primary" (click)="step = 2">C'est fait !</button>
+        <button class="btn btn-primary" (click)="step = 2">C'est fait !</button>
+      </div>
+
+      <div class="right">
+        <app-good-plan [expanded]="true" [plan]="plan"></app-good-plan>
+      </div>
     </div>
-
-    <div class="right">
-      <app-good-plan [expanded]="true"></app-good-plan>
-    </div>
-</div>
     <div class="mt-8">
       <h5>Avis</h5>
 
@@ -29,10 +31,10 @@
 
   <section *ngSwitchCase="2" fxLayout="column" fxLayoutAlign="center center" class="panel">
 
-      <h1 class="mb-5">Et un bon plan de plus!</h1>
-      <h1 class="mb-5">Allez, donne-nous ton avis, c'était simple ?</h1>
+    <h1 class="mb-5">Et un bon plan de plus!</h1>
+    <h1 class="mb-5">Allez, donne-nous ton avis, c'était simple ?</h1>
 
-      <app-stars [size]="40" (click)="step = 3" [numbers]="false"></app-stars>
+    <app-stars [size]="40" (click)="step = 3" [numbers]="false"></app-stars>
   </section>
 
   <section *ngSwitchCase="3" fxLayout="column" fxLayoutAlign="space-around center" class="panel">
@@ -41,19 +43,19 @@
 
       <h1 class="mb-5 text-center">Quelque chose à ajouter pour aider les autres ?</h1>
 
-    <form class="clr-form p-0">
-      <div class="clr-control-container">
+      <form class="clr-form p-0">
+        <div class="clr-control-container">
         <textarea placeholder="C'est facile d'obtenir cette bourse, fonçez !"
                   [(ngModel)]="remark" name="description"
                   rows="5"
                   required></textarea>
-      </div>
-    </form>
+        </div>
+      </form>
 
 
       <div fxLayoutAlign="flex-end">
-      <button class="btn btn-link" (click)="close()">Peut-être plus tard</button>
-      <button class="btn btn-secondary btn-primary mr-0" (click)="close()">Ajouter un message</button>
+        <button class="btn btn-link" (click)="close()">Peut-être plus tard</button>
+        <button class="btn btn-secondary btn-primary mr-0" (click)="close()">Ajouter un message</button>
       </div>
 
     </div>

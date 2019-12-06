@@ -66,7 +66,7 @@
       Posté par
     </div>
     <div class="card-text" fxLayoutAlign="space-between center">
-      <div>SNCF</div>
+      <div>{{plan?.institution?.name}}</div>
       <div class="category" (click)="goToCategory()">
         <clr-icon shape="car"></clr-icon>
         Transport
@@ -83,8 +83,7 @@
       Description
     </div>
     <div class="card-text">
-      Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
-      ipsumLorem ipsumLorem ipsumLorem ipsum
+      {{plan?.description}}
     </div>
   </div>
 

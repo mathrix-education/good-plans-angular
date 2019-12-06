@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Plan} from '../../model/plan';
+import {PlanService} from '../../services/plan.service';
 
 @Component({
   selector: 'app-good-plan',
@@ -26,7 +27,7 @@ export class GoodPlanComponent implements OnInit {
     {name: 'Sorties', icon: 'happy-face'},
     {name: 'Scolaires', icon: 'flask'},
   ];
-  constructor(private router: Router) {
+  constructor(private router: Router, private planService: PlanService) {
   }
 
   ngOnInit() {
@@ -43,8 +44,9 @@ export class GoodPlanComponent implements OnInit {
   }
 
   selectCard() {
-    if(!this.stopClick) {
-    this.router.navigate(['/app/modal']);
+    this.planService.selectedPlan = this.plan;
+    if (!this.stopClick) {
+      this.router.navigate(['/app/modal']);
     }
   }
 

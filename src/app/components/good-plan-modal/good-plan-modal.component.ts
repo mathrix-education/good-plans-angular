@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, ActivatedRouteSnapshot, Router} from '@angular/router';
+import {Plan} from '../../model/plan';
+import {PlanService} from '../../services/plan.service';
 
 @Component({
   selector: 'app-good-plan-modal',
@@ -12,11 +14,18 @@ export class GoodPlanModalComponent implements OnInit {
 
   remark: string;
 
+  plan: Plan;
+
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private planService: PlanService
+  ) {
+
+  }
 
   ngOnInit() {
+    console.log(this.planService.selectedPlan);
+    this.plan = this.planService.selectedPlan;
   }
 
   close() {
