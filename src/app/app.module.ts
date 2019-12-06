@@ -20,6 +20,7 @@ import {AuthenticationService} from './services/authentication.service';
 import {FilterComponent} from './components/filter/filter.component';
 import {AuthTokenName, BaseUrl, IridiumModule} from '@mathrix-education/iridium';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HeaderIconComponent } from './components/header-icon/header-icon.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     GoodPlanModalComponent,
     LoginComponent,
     StarsComponent,
-    FilterComponent
+    FilterComponent,
+    HeaderIconComponent
   ],
   imports: [
     BrowserModule,

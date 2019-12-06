@@ -1,6 +1,10 @@
-<div class= "filter-container" fxLayoutAlign="center center" fxLayoutGap="8px">
+<div class="filter-container" fxLayoutAlign="center center" fxLayoutGap="8px">
 
-  <div>Filtre par ville</div>
+  <div>
+    <div class="menu">
+      <clr-icon shape="map-marker" class="mr-1"></clr-icon>
+      Ville</div>
+  </div>
 
   <select clrSelect name="city" [(ngModel)]="filter.city">
     <option value="one">Paris</option>
@@ -20,3 +24,15 @@
 </div>
 
 
+
+<div class="btn-group">
+  <button class="btn">
+    <clr-icon shape="map-marker"></clr-icon>
+    Ville
+  </button>
+
+  <button class="btn">
+    <clr-icon shape="car"></clr-icon>
+    Catégorie
+  </button>
+</div>
