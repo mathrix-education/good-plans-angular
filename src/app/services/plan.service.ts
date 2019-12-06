@@ -1,9 +1,19 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
+import {BaseUrl, Endpoint, ReadOptions} from '@mathrix-education/iridium';
+import {Plan} from '../model/plan';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PlanService {
+export class PlanService extends Endpoint<Plan> {
 
-  constructor() { }
+
+  constructor(http: HttpClient, @Inject(BaseUrl) url) {
+    super(http, url, 'user');
+  }
+
+  read(id: any, options?: ReadOptions<Plan>): any {
+    return this.defaultRead(id, options);
+  }
 }
