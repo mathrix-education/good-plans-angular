@@ -1,12 +1,11 @@
 import {ModelWithDates} from '@mathrix-education/iridium';
 
-export type CityType = 'paris' | 'grenoble';
-export type CategoryType = 'santé' | 'logement' | 'transport' | 'alimentation' | 'sorties' | 'scolaire';
+export type CityType = 'Paris' | 'Grenoble';
 
 export interface Institution extends ModelWithDates {
   name: string;
   description: string;
   city?: CityType;
-  category: CategoryType;
+  category: string;
   filter?: string[][]; // [['age', '=', '25'], ['city', '!=', 'grenoble']]
 }
