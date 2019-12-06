@@ -11,6 +11,7 @@ export class GoodPlanModalComponent implements OnInit {
   step = 1;
 
   remark: string;
+
   constructor(
     private router: Router
   ) { }

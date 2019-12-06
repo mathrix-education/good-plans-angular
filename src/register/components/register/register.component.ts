@@ -16,18 +16,18 @@ export class RegisterComponent {
 
   steps = [
     {
-      first: 'On commence la configuration !',
-      question: 'Ou habites-tu?',
+      first: 'Pour commencer, dis nous-en plus sur toi !',
+      question: 'Où habites-tu?',
       field: 'city'
     },
     {
-      first: 'Les cartes "moins de 30 ans", "12-27", ça te dit ?',
+      first: 'Une carte "moins de 30 ans" ou "12-27", ça te dit ?',
       question: 'Entre ton année de naissance',
       field: 'birth_date'
     },
     {
       first: 'Allez, soyons intime',
-      question: 'Quel est ton prénom?',
+      question: 'Quel est ton prénom ?',
       field: 'username'
     },
     {
@@ -51,7 +51,7 @@ export class RegisterComponent {
   }
 
   register() {
-    this.router.navigate(['/app', 'mes-bons-plans']);
+    this.router.navigate(['/app', 'profil']);
   }
 
   saveCity(city: string) {

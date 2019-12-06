@@ -22,11 +22,11 @@ export const routes: Route[] = [
   {
     path: 'app',
     component: AppComponent, children: [
-      {path: 'mes-bons-plans', component: MainPageComponent},
       {
         path: 'profil',
         component: ProfilePageComponent
       },
+      {path: 'mes-bons-plans', component: MainPageComponent},
       {
         path: 'bon-plan/:id',
         component: GoodPlanComponent
