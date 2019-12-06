@@ -9,14 +9,13 @@ import {CityType} from '../../model/user';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
-export class MainPageComponent {
+export class MainPageComponent implements OnInit {
 
   plans: Plan[] = [];
   displayedPlans = [];
 
 
   constructor(private plansService: PlanService, private route: ActivatedRoute) {
-    this.loadPlans();
     route.queryParams.subscribe(p => {
       console.log(p, 'pp');
       if (p.category) {
@@ -27,6 +26,11 @@ export class MainPageComponent {
         console.log('do nothing');
       }
     });
+  }
+
+  ngOnInit() {
+    this.loadPlans();
+
   }
 
   loadPlans() {
