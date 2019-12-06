@@ -11,3 +11,10 @@
   max-width: 800px;
   margin: auto;
 }
+
+.box {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}

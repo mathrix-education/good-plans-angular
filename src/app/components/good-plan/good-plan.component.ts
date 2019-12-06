@@ -6,9 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./good-plan.component.scss']
 })
 export class GoodPlanComponent implements OnInit {
-  expanded = false;
-  @Input() withReview = false;
-  @Input() withRequirements = false;
+  @Input() expanded = false;
 
   constructor() {
   }

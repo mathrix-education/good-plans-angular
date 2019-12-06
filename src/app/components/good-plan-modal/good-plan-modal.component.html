@@ -1,6 +1,6 @@
 <div class="main" [ngSwitch]="step">
-  <section *ngSwitchCase="1" fxLayout="row" fxLayoutGap="40px">
-
+  <section *ngSwitchCase="1">
+<div fxLayout="row" fxLayoutGap="40px">
     <div>
       <h1>Etapes</h1>
 
@@ -11,26 +11,52 @@
       <button class="btn btn-primary" (click)="step = 2">C'est fait !</button>
     </div>
 
-    <div>
-      <app-good-plan></app-good-plan>
+    <div class="right">
+      <app-good-plan [expanded]="true"></app-good-plan>
+    </div>
+</div>
+    <div class="mt-8">
+      <h5>Avis</h5>
+
+        <div class="mb-2" *ngFor="let n of [0,1,2,3,4]">
+          <h6 class="mt-0">Jean
+            <app-stars></app-stars>
+          </h6>
+          <p class="mt-0">Fait en 10 mins !</p>
+        </div>
     </div>
   </section>
 
-  <section *ngSwitchCase="2" fxLayout="column" fxLayoutAlign="space-around center">
+  <section *ngSwitchCase="2" fxLayout="column" fxLayoutAlign="center center" class="panel">
 
-      <h1>Donne ton avis</h1>
+      <h1 class="mb-5">Donne ton avis</h1>
 
       <app-stars [size]="40" (click)="step = 3"></app-stars>
   </section>
 
-  <section *ngSwitchCase="3" fxLayout="column" fxLayoutAlign="space-around center">
+  <section *ngSwitchCase="3" fxLayout="column" fxLayoutAlign="space-around center" class="panel">
 
-      <h1>Encore une remarques ?</h1>
+    <div class="box">
 
-      <textarea clrTextarea [(ngModel)]="remark" name="description" required></textarea>
+      <h1 class="mb-5">Encore une remarques ?</h1>
+
+    <form class="clr-form">
+      <div class="clr-control-container">
+        <textarea placeholder="Si tu as eu des difficultés à le faire"
+                  [(ngModel)]="remark" name="description"
+                  rows="5"
+                  required></textarea>
+      </div>
+    </form>
+
 
       <button class="btn btn-primary">Non ça ira</button>
+
+    </div>
+
   </section>
 
 
 </div>
+
+

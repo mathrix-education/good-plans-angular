@@ -28,16 +28,17 @@
     <a class="btn btn-sm btn-link" [routerLink]="['/app/modal']">c'est parti !</a>
   </div>
 
-  <div *ngIf="withRequirements">
-    <ng-content *ngTemplateOutlet="requirements"></ng-content>
-  </div>
-  <div *ngIf="withReview">
-    <ng-content *ngTemplateOutlet="review"></ng-content>
+  <div class="card-footer" *ngIf="!expanded">
+    <a class="btn btn-sm btn-link" [routerLink]="['/app/modal']">ça m'intéresse</a>
   </div>
 
-  <div class="card-footer">
-    <button class="btn btn-sm btn-link" (click)="expand()">ça m'intéresse</button>
+  <div *ngIf="expanded">
+    <ng-content *ngTemplateOutlet="requirements"></ng-content>
+    <ng-content *ngTemplateOutlet="institution"></ng-content>
+    <ng-content *ngTemplateOutlet="description"></ng-content>
   </div>
+
+
 </div>
 
 <ng-template #requirements>
@@ -55,20 +56,35 @@
 
 </ng-template>
 
-<ng-template #review>
+<ng-template #institution>
   <div class="card-block">
     <div class="card-title">
-      Avis
+      Posté par
     </div>
-    <div class="card-text">
-
-      <div class="mb-2" *ngFor="let n of [0,1,2,3,4]">
-        <h6>Jean
-          <app-stars></app-stars>
-        </h6>
-        <p class="mt-0">Fait en 10 mins !</p>
+    <div class="card-text" fxLayoutAlign="space-between center">
+      <div>SNCF</div>
+      <div class="category">
+        <clr-icon shape="car"></clr-icon>
+        Transport
       </div>
-
     </div>
   </div>
+
+
 </ng-template>
+
+<ng-template #description>
+  <div class="card-block">
+    <div class="card-title">
+      Description
+    </div>
+    <div class="card-text">
+      Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
+      ipsumLorem ipsumLorem ipsumLorem ipsum
+    </div>
+  </div>
+
+
+</ng-template>
+
+

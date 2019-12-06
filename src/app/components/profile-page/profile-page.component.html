@@ -1,24 +1,36 @@
 <div class="main">
-  <h2>Les inmanquables</h2>
+  <h2>Ta checklist pour être au top</h2>
 
   <clr-accordion>
     <clr-accordion-panel>
-      <clr-accordion-title>Item 1</clr-accordion-title>
+      <clr-accordion-title fxLayoutAlign="stretch center">
+        <clr-icon shape="heart" class="mr-1"></clr-icon>
+        Tu as une bonne assurance maladie ? Une mutuelle ?
+      </clr-accordion-title>
       <clr-accordion-content *clrIfExpanded>Content 1</clr-accordion-content>
     </clr-accordion-panel>
 
     <clr-accordion-panel>
-      <clr-accordion-title>Item 2</clr-accordion-title>
+      <clr-accordion-title fxLayoutAlign="stretch center">
+        <clr-icon shape="bank" class="mr-1"></clr-icon>
+        Envie d'une bourse pour tes études ?
+      </clr-accordion-title>
       <clr-accordion-content *clrIfExpanded>Content 2</clr-accordion-content>
     </clr-accordion-panel>
 
     <clr-accordion-panel>
-      <clr-accordion-title>Item 3</clr-accordion-title>
+      <clr-accordion-title fxLayoutAlign="stretch center">
+        <clr-icon shape="car" class="mr-1"></clr-icon>
+        Tu voyages en train ? En covoiturage ?
+      </clr-accordion-title>
       <clr-accordion-content *clrIfExpanded>Content 3</clr-accordion-content>
     </clr-accordion-panel>
   </clr-accordion>
 
   <h2>Les bons plans du moment</h2>
-  <h2>A renouveler</h2>
 
+  <div fxLayout="row">
+    <app-good-plan></app-good-plan>
+    <app-good-plan></app-good-plan>
+  </div>
 </div>
