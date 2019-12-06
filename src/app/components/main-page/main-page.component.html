@@ -1,5 +1,5 @@
 <div fxLayout="column" fxLayoutAlign="stretch center">
-<app-filter (filter)="updateFilters($event)"></app-filter>
+<app-filter></app-filter>
 <div class="main" gdColumns="auto auto auto" gdGap="16px">
   <app-good-plan [mini]="true" [plan]="plan" *ngFor="let plan of plans"></app-good-plan>
 </div>

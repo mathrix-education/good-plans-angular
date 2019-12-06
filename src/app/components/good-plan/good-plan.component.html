@@ -1,6 +1,6 @@
 <div class="card mt-0" [ngClass]="{mini: mini}" (click)="selectCard()">
   <div class="card-header text-center" fxLayoutAlign="space-between center">
-    <div>{{plan.title}}</div>
+    <div>{{plan?.title}}</div>
 
     <app-stars></app-stars>
   </div>
@@ -14,7 +14,7 @@
       <div class="card-media-description">
         <div>
 
-          {{plan.title}}
+          {{plan?.title}}
           <clr-icon shape="car"></clr-icon>
         </div>
       </div>
