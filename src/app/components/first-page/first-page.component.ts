@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-first-page',
@@ -10,6 +11,9 @@ export class FirstPageComponent {
 
   form = {username: '', password: ''};
 
+
+  constructor(private authentication: AuthenticationService) {
+  }
 
   login() {
     console.log(this.form);

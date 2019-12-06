@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppComponent} from './components/app/app.component';
 import {RouterModule} from '@angular/router';
 import {ClarityModule} from '@clr/angular';
@@ -14,9 +13,11 @@ import {GoodPlanComponent} from './components/good-plan/good-plan.component';
 import {FirstPageComponent} from './components/first-page/first-page.component';
 import {RootComponent} from './components/root/root.component';
 import {GoodPlanModalComponent} from './components/good-plan-modal/good-plan-modal.component';
-import { LoginComponent } from './components/login/login.component';
+import {LoginComponent} from './components/login/login.component';
 import {FormsModule} from '@angular/forms';
-import { StarsComponent } from './components/stars/stars.component';
+import {StarsComponent} from './components/stars/stars.component';
+import {AuthenticationService} from './services/authentication.service';
+import {FilterComponent} from './components/filter/filter.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { StarsComponent } from './components/stars/stars.component';
     RootComponent,
     GoodPlanModalComponent,
     LoginComponent,
-    StarsComponent
+    StarsComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,7 @@ import { StarsComponent } from './components/stars/stars.component';
     FlexLayoutModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [RootComponent]
 })
 export class AppModule {

@@ -1,0 +1,22 @@
+<div class= "filter-container" fxLayoutAlign="center center" fxLayoutGap="8px">
+
+  <div>Filtre par ville</div>
+
+  <select clrSelect name="city" [(ngModel)]="filter.city">
+    <option value="one">Paris</option>
+    <option value="two">Grenoble</option>
+  </select>
+
+  <div>Filtrer par catégorie</div>
+
+  <select clrSelect name="category" [(ngModel)]="filter.category">
+    <option value="one">Santé</option>
+    <option value="two">Logement</option>
+    <option value="two">Transport</option>
+    <option value="two">Alimentation</option>
+    <option value="two">Sorties</option>
+    <option value="two">Scolaire</option>
+  </select>
+</div>
+
+
