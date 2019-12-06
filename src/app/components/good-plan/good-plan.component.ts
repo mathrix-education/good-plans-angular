@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-good-plan',
@@ -7,6 +7,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class GoodPlanComponent implements OnInit {
   @Input() expanded = false;
+  @Input() mini = false;
+
+  title = 'La carte jeune te permet d\'économiser 50% sur les trajets de train SNCF.';
 
   constructor() {
   }

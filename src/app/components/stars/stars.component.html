@@ -1,3 +1,4 @@
 <div fxLayout="row" fxLayoutAlign="stretch center">
-  <clr-icon shape="star" [attr.size]="size" *ngFor="let n of numbers"></clr-icon>
+  <clr-icon shape="star" *ngFor="let n of [1,2,3,4,5]" [ngClass]="{full: grade >= n}" [attr.size]="size"></clr-icon>
 </div>
+<span class="number">23</span>

@@ -1,5 +1,7 @@
-<div class="main">
-  <h2>Ta checklist pour être au top</h2>
+<div class="main" fxLayout="column" fxLayoutAlign="stretch center">
+  <h1 class="mb-8">Bienvenue Jake,
+  prêt à la chasse aux bons plans ?</h1>
+  <h3>Les inmanquables pour démarrer</h3>
 
   <clr-accordion>
     <clr-accordion-panel>
@@ -7,7 +9,9 @@
         <clr-icon shape="heart" class="mr-1"></clr-icon>
         Tu as une bonne assurance maladie ? Une mutuelle ?
       </clr-accordion-title>
-      <clr-accordion-content *clrIfExpanded>Content 1</clr-accordion-content>
+      <clr-accordion-content *clrIfExpanded>
+        <ng-content *ngTemplateOutlet="cards"></ng-content>
+      </clr-accordion-content>
     </clr-accordion-panel>
 
     <clr-accordion-panel>
@@ -15,7 +19,9 @@
         <clr-icon shape="bank" class="mr-1"></clr-icon>
         Envie d'une bourse pour tes études ?
       </clr-accordion-title>
-      <clr-accordion-content *clrIfExpanded>Content 2</clr-accordion-content>
+      <clr-accordion-content *clrIfExpanded>
+        <ng-content *ngTemplateOutlet="cards"></ng-content>
+      </clr-accordion-content>
     </clr-accordion-panel>
 
     <clr-accordion-panel>
@@ -23,14 +29,21 @@
         <clr-icon shape="car" class="mr-1"></clr-icon>
         Tu voyages en train ? En covoiturage ?
       </clr-accordion-title>
-      <clr-accordion-content *clrIfExpanded>Content 3</clr-accordion-content>
+      <clr-accordion-content *clrIfExpanded>
+        <ng-content *ngTemplateOutlet="cards"></ng-content>
+      </clr-accordion-content>
     </clr-accordion-panel>
   </clr-accordion>
 
-  <h2>Les bons plans du moment</h2>
+  <h3>Les bons plans du moment</h3>
 
-  <div fxLayout="row">
-    <app-good-plan></app-good-plan>
-    <app-good-plan></app-good-plan>
+  <div fxLayout="row" fxLayoutGap="20px">
+    <app-good-plan [mini]="true" *ngFor="let n of [0,1,2]"></app-good-plan>
   </div>
 </div>
+
+<ng-template #cards>
+  <div fxLayout="row" fxLayoutGap="20px" class="my-3">
+    <app-good-plan [mini]="true" *ngFor="let n of [0,1,2]"></app-good-plan>
+  </div>
+</ng-template>

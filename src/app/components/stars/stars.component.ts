@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class StarsComponent implements OnInit {
 
-  numbers = [0,1,2,3,4];
+  grade = 4.5;
   @Input() size;
   constructor() { }
 

@@ -1,34 +1,30 @@
-<div class="card mt-0">
-  <div class="card-header text-center">
+<div class="card mt-0" [ngClass]="{mini: mini}">
+  <div class="card-header text-center" fxLayoutAlign="space-between center">
     La carte jeune
+
+    <app-stars></app-stars>
   </div>
-  <div class="card-block">
+
+  <!-- card block title -->
+  <div class="card-block" >
     <div class="card-media-block">
       <img class="card-media-image">
       <div class="card-media-description">
-        <div>La carte jeune te permet d'économiser 50% sur les trajets de train SNCF.</div>
+        <div>{{title}}</div>
       </div>
     </div>
 
-    <div class="card-text" fxLayoutAlign="space-between">
+    <div class="card-text" fxLayoutAlign="space-between" *ngIf="!mini">
       <span class="card-media-text">
           <clr-icon shape="clock"></clr-icon>
           Inscrit en 20 mins
 
       </span>
-      <div>
-        <app-stars></app-stars>
-        <span class="ml-1">23 avis</span>
-      </div>
     </div>
   </div>
 
 
-  <div class="card-footer" *ngIf="false">
-    <a class="btn btn-sm btn-link" [routerLink]="['/app/modal']">c'est parti !</a>
-  </div>
-
-  <div class="card-footer" *ngIf="!expanded">
+  <div class="card-footer" *ngIf="!expanded && !mini">
     <a class="btn btn-sm btn-link" [routerLink]="['/app/modal']">ça m'intéresse</a>
   </div>
 
@@ -48,8 +44,9 @@
     </div>
     <div class="card-text">
 
-      <span class="label label-info">- de 25 ans</span>
-      <span class="label label-success">Pas de condtion de ressources</span>
+      <span class="label label-info">jusqu'à 27 ans inclus</span>
+      <!--<span class="label label-success">Pas de condtion de ressources</span>-->
+      <span class="label label-warning">Valide toute l'année</span>
     </div>
   </div>
 
@@ -83,6 +80,9 @@
       ipsumLorem ipsumLorem ipsumLorem ipsum
     </div>
   </div>
+
+
+
 
 
 </ng-template>
