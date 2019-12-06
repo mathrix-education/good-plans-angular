@@ -1,20 +1,41 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {AuthTokenName, BaseUrl, DataResponse} from '@mathrix-education/iridium';
+import {switchMap, tap} from 'rxjs/operators';
+import {UserService} from './user.service';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
+  /** the logged user */
   user;
 
-  constructor(private htp: HttpClient) {
+  private jwt = new JwtHelperService();
+
+  constructor(private htp: HttpClient, private userService: UserService, @Inject(AuthTokenName) private authToken, @Inject(BaseUrl) private baseUrl
+  ) {
   }
 
   isLogged() {
-    return true;
+    return localStorage.getItem(this.authToken) !== undefined;
   }
 
-  login() {
+  logout() {
+    localStorage.clear();
+    this.user = undefined;
+  }
+
+
+  login(body: { email: string, password: string }) {
+    return this.htp.post(`${this.baseUrl}/auth/login`, body).pipe(tap((dataResponse: DataResponse<{ token: string }>) => {
+        localStorage.setItem(this.authToken, dataResponse.data.token);
+      }),
+      switchMap((token: DataResponse<{ token: string }>) => {
+        console.log(this.jwt.decodeToken());
+        return this.userService.read(this.jwt.decodeToken().id);
+      }));
   }
 }

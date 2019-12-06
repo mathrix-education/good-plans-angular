@@ -9,14 +9,14 @@ import {AuthenticationService} from '../../services/authentication.service';
 export class FirstPageComponent {
   opened = false;
 
-  form = {username: '', password: ''};
+  form = {email: '', password: ''};
 
 
   constructor(private authentication: AuthenticationService) {
   }
 
   login() {
-    console.log(this.form);
+    this.authentication.login(this.form).subscribe();
   }
 
 

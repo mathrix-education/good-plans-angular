@@ -18,6 +18,8 @@ import {FormsModule} from '@angular/forms';
 import {StarsComponent} from './components/stars/stars.component';
 import {AuthenticationService} from './services/authentication.service';
 import {FilterComponent} from './components/filter/filter.component';
+import {AuthTokenName, BaseUrl, IridiumModule} from '@mathrix-education/iridium';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -40,9 +42,14 @@ import {FilterComponent} from './components/filter/filter.component';
     ClarityModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [AuthenticationService],
+  providers: [
+    AuthenticationService,
+    {provide: BaseUrl, useValue: 'https://dev.api.good-plans.mathrix.fr'},
+    {provide: AuthTokenName, useValue: 'good-plan'}
+  ],
   bootstrap: [RootComponent]
 })
 export class AppModule {
