@@ -7,12 +7,18 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class StarsComponent implements OnInit {
 
-  grade = 4.5;
+  grade = this.getGrade();
   @Input() size;
   @Input() numbers = true;
+
+  randomNumber = Math.floor(Math.random() * 20, 0) + 12;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getGrade() {
+    return Math.floor(Math.random() * 2 + 4, 0);
   }
 
   mouseOver(n) {

@@ -1,6 +1,8 @@
 <div fxLayout="column" fxLayoutAlign="stretch center">
-<app-filter></app-filter>
-<div class="main" gdColumns="auto auto auto" gdGap="16px">
+<app-filter class="mb-5"></app-filter>
+<div class="main" gdColumns.gt-xs="auto auto auto" gdGap="16px">
   <app-good-plan [mini]="true" [plan]="plan" *ngFor="let plan of displayedPlans"></app-good-plan>
+
+  <p *ngIf="displayedPlans?.length === 0">Dommage, aucun bon plan trouvé. Reste attentif, les bons plans vont bientôt tomber !</p>
 </div>
 </div>

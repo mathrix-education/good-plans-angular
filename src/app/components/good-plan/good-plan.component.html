@@ -9,13 +9,14 @@
   <div class="card-block">
     <div class="card-media-block">
       <div fxLayout="column" fxLayoutAlign="stretch center">
-        <img class="card-media-image">
+        <div class="card-media-image" fxLayoutAlign="center center">
+          <clr-icon [attr.shape]="category.icon" size="24"></clr-icon>
+        </div>
       </div>
       <div class="card-media-description">
         <div>
 
           {{plan?.description}}
-          <clr-icon shape="car"></clr-icon>
         </div>
       </div>
     </div>
