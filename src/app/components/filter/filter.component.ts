@@ -11,7 +11,7 @@ export class FilterComponent {
   categories = [
     {name: 'Santé', icon: 'heart'},
     {name: 'Logement', icon: 'home'},
-    {name: 'Transport', icon: 'car'},
+    {name: 'Transports', icon: 'car'},
     {name: 'Alimentation', icon: 'fish'},
     {name: 'Sorties', icon: 'happy-face'},
     {name: 'Scolaires', icon: 'flask'},

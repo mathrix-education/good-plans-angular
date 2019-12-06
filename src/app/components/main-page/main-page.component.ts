@@ -18,10 +18,13 @@ export class MainPageComponent {
   constructor(private plansService: PlanService, private route: ActivatedRoute) {
     this.loadPlans();
     route.queryParams.subscribe(p => {
+      console.log(p, 'pp');
       if (p.category) {
         this.filtersPlansOnCategory(p.category);
       } else if (p.city) {
         this.filtersPlansOnCity(p.city);
+      } else {
+        console.log('do nothing');
       }
     });
   }
@@ -30,15 +33,26 @@ export class MainPageComponent {
     this.plans = this.plansService.list().subscribe(t => {
       this.plans = t.data;
       this.displayedPlans = t.data;
+      console.log('loaded', this.displayedPlans);
     });
   }
 
   filtersPlansOnCity(city: CityType) {
-    this.displayedPlans = this.plans.filter(plan => plan.cities.includes(city));
+    console.log(city, 'ccc');
+    this.displayedPlans = this.plans.filter(plan => {
+      console.log(plan.city);
+      return plan.city === city;
+    });
+    console.log('loadedgg', this.displayedPlans);
   }
 
 
   filtersPlansOnCategory(category) {
-    this.displayedPlans = this.plans.filter(plan => plan.categories.includes(category));
+    console.log(category, 'categorY');
+    this.displayedPlans = this.plans.filter(plan => {
+      console.log(plan.category);
+      return plan.category === category;
+    });
+    console.log('loadedg52', this.displayedPlans);
   }
 }

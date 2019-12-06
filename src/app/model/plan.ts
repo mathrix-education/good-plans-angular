@@ -6,8 +6,8 @@ export interface Plan extends ModelWithDates {
   description: string;
   link: string;
   institution_id: number;
-  cities: CityType[];
-  categories: string[];
+  city: CityType;
+  category: string;
   starting_at?: Date;
   ending_at?: Date;
   video_id: string;
