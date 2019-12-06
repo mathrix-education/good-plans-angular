@@ -16,22 +16,22 @@ export class RegisterComponent {
 
   steps = [
     {
-      question: 'Ou habites tu?',
+      first: 'On commence la configuration !',
+      question: 'Ou habites-tu?',
       field: 'city'
     },
     {
-      question: 'Quel est ton prénom?',
-      field: 'last_name'
-    },
-    {
-      question: 'Quel est ton nom?',
-      field: 'first_name'
-    },
-    {
-      question: 'Quand est tu né?',
+      first: 'Les cartes "moins de 30 ans", "12-27", ça te dit ?',
+      question: 'Entre ton année de naissance',
       field: 'birth_date'
     },
     {
+      first: 'Allez, soyons intime',
+      question: 'Quel est ton prénom?',
+      field: 'username'
+    },
+    {
+      first: '',
       question: 'C\'est parti!',
       field: ''
     }

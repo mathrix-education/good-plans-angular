@@ -22,6 +22,10 @@ export class GoodPlanComponent implements OnInit {
     this.expanded = true;
   }
 
+  goToCategory() {
+    this.router.navigate(['/app/profil'], {queryParams: {category: 'Transport'}});
+  }
+
   selectCard() {
     console.log('select card');
     this.router.navigate(['/app/modal']);

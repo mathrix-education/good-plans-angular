@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-filter',
@@ -25,6 +26,13 @@ export class FilterComponent {
   showMenuCategory = false;
   showMenuCities = false;
 
+
+  selectedCategory: any;
+  selectedCity: any;
+
+
+  constructor(private router: Router){}
+
   toggleCategory() {
     this.showMenuCategory = !this.showMenuCategory;
     this.showMenuCities = false;
@@ -33,5 +41,18 @@ export class FilterComponent {
   toggleCities() {
     this.showMenuCities = !this.showMenuCities;
     this.showMenuCategory = false;
+  }
+
+  selectCategory(category) {
+    this.selectedCategory = category;
+    this.showMenuCategory = false;
+    this.router.navigate([], {queryParams: {category: category.name}});
+  }
+
+  selectCity(city) {
+    this.selectedCity = city;
+    this.showMenuCities = false;
+
+    this.router.navigate([], {queryParams: {city: city.name}});
   }
 }
