@@ -10,34 +10,32 @@
     </ng-container>
   </button>
 
-  <div>
-    <div class="menu">
-      <clr-icon shape="map-marker" class="mr-1"></clr-icon>
-      Ville
-    </div>
-  </div>
 
-  <select clrSelect name="city" [(ngModel)]="filterInternal.city" (ngModelChange)="filter.emit(filterInternal)">
-    <option value="one">Paris</option>
-    <option value="two">Grenoble</option>
-  </select>
+  <button class="btn" (click)="toggleCategory()">
+    <ng-container *ngIf="!selectedCategory">
+      <clr-icon shape="car"></clr-icon>
+      Catégorie
+    </ng-container>
 
-  <div>Filtrer par catégorie</div>
-
-  <select clrSelect name="category" [(ngModel)]="filterInternal.category" (ngModelChange)="filter.emit(filterInternal)">
-    <option value="santé">Santé</option>
-    <option value="logement">Logement</option>
-    <option value="transport">Transport</option>
-    <option value="alimentation">Alimentation</option>
-    <option value="">Sorties</option>
-    <option value="two">Scolaire</option>
-  </select>
+    <ng-container *ngIf="selectedCategory">
+      <clr-icon [attr.shape]="selectedCategory.icon"></clr-icon>
+      {{selectedCategory.name}}
+    </ng-container>
+  </button>
 </div>
 
 
-<div class="btn-group">
-  <button class="btn">
-    <clr-icon shape="map-marker"></clr-icon>
-    Ville
-  </button>
+<section class="main-menu">
+
+  <div class="menu menu1" *ngIf="showMenuCities">
+    <div class="item" *ngFor="let city of cities" (click)="selectCity(city)">
+      <clr-icon [attr.shape]="city.icon" class="mr-1"></clr-icon>
+      {{city.name}}</div>
+  </div>
+  <div class="menu menu2" *ngIf="showMenuCategory" >
+    <div class="item" *ngFor="let category of categories" (click)="selectCategory(category)">
+      <clr-icon [attr.shape]="category.icon" class="mr-1"></clr-icon>
+      {{category.name}}</div>
+  </div>
+</section>
 
