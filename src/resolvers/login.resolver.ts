@@ -15,13 +15,11 @@ export class LoginResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     if (this.authService.isLogged()) {
       const id = localStorage.getItem('userId');
-      console.log(id);
       return this.userService.read(id).pipe(tap((response: DataResponse<User>) => {
         this.authService.user = response.data;
-        this.router.navigate(['/app']);
+        this.router.navigate(['/app', 'mes-bons-plans']);
       }));
     } else {
-      console.log('out');
       return of(true);
     }
   }
