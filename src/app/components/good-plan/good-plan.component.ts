@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-good-plan',
@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./good-plan.component.scss']
 })
 export class GoodPlanComponent implements OnInit {
+  expanded = false;
+  @Input() withReview = false;
+  @Input() withRequirements = false;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  expand() {
+    this.expanded = true;
   }
 
 }

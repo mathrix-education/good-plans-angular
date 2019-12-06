@@ -1,0 +1,36 @@
+<div class="main" [ngSwitch]="step">
+  <section *ngSwitchCase="1" fxLayout="row" fxLayoutGap="40px">
+
+    <div>
+      <h1>Etapes</h1>
+
+      <h2>1. Prépare ta carte d'identité</h2>
+
+      <h2>2. Va sur ce lien <a href="https://oui.sncf" target="_blank"></a><clr-icon shape="link" size="36"></clr-icon></h2>
+
+      <button class="btn btn-primary" (click)="step = 2">C'est fait !</button>
+    </div>
+
+    <div>
+      <app-good-plan></app-good-plan>
+    </div>
+  </section>
+
+  <section *ngSwitchCase="2" fxLayout="column" fxLayoutAlign="space-around center">
+
+      <h1>Donne ton avis</h1>
+
+      <app-stars [size]="40" (click)="step = 3"></app-stars>
+  </section>
+
+  <section *ngSwitchCase="3" fxLayout="column" fxLayoutAlign="space-around center">
+
+      <h1>Encore une remarques ?</h1>
+
+      <textarea clrTextarea [(ngModel)]="remark" name="description" required></textarea>
+
+      <button class="btn btn-primary">Non ça ira</button>
+  </section>
+
+
+</div>

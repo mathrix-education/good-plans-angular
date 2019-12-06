@@ -16,6 +16,7 @@ import {RootComponent} from './components/root/root.component';
 import {GoodPlanModalComponent} from './components/good-plan-modal/good-plan-modal.component';
 import { LoginComponent } from './components/login/login.component';
 import {FormsModule} from '@angular/forms';
+import { StarsComponent } from './components/stars/stars.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {FormsModule} from '@angular/forms';
     FirstPageComponent,
     RootComponent,
     GoodPlanModalComponent,
-    LoginComponent
+    LoginComponent,
+    StarsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mt-0">
   <div class="card-header text-center">
     La carte jeune
   </div>
@@ -6,25 +6,41 @@
     <div class="card-media-block">
       <img class="card-media-image">
       <div class="card-media-description">
-        <span class="card-media-text">
-          <clr-icon shape="clock"></clr-icon>
-          Inscrit en 20 mins
-                        </span>
-        <div fxLayout="row" fxLayoutAlign="stretch center">
-          <clr-icon shape="star"></clr-icon>
-          <clr-icon shape="star"></clr-icon>
-          <clr-icon shape="star"></clr-icon>
-          <clr-icon shape="star"></clr-icon>
-          <span class="ml-1">23 avis</span>
-        </div>
+        <div>La carte jeune te permet d'économiser 50% sur les trajets de train SNCF.</div>
       </div>
     </div>
 
-    <div class="card-text">
-      <div>La carte jeune te permet d'économiser 50% sur les trajets de train SNCF.</div>
+    <div class="card-text" fxLayoutAlign="space-between">
+      <span class="card-media-text">
+          <clr-icon shape="clock"></clr-icon>
+          Inscrit en 20 mins
+
+      </span>
+      <div>
+        <app-stars></app-stars>
+        <span class="ml-1">23 avis</span>
+      </div>
     </div>
   </div>
 
+
+  <div class="card-footer" *ngIf="false">
+    <a class="btn btn-sm btn-link" [routerLink]="['/app/modal']">c'est parti !</a>
+  </div>
+
+  <div *ngIf="withRequirements">
+    <ng-content *ngTemplateOutlet="requirements"></ng-content>
+  </div>
+  <div *ngIf="withReview">
+    <ng-content *ngTemplateOutlet="review"></ng-content>
+  </div>
+
+  <div class="card-footer">
+    <button class="btn btn-sm btn-link" (click)="expand()">ça m'intéresse</button>
+  </div>
+</div>
+
+<ng-template #requirements>
   <div class="card-block">
     <div class="card-title">
       Conditions d'obtention
@@ -36,7 +52,23 @@
     </div>
   </div>
 
-  <div class="card-footer">
-    <button class="btn btn-sm btn-link">ça m'intéresse</button>
+
+</ng-template>
+
+<ng-template #review>
+  <div class="card-block">
+    <div class="card-title">
+      Avis
+    </div>
+    <div class="card-text">
+
+      <div class="mb-2" *ngFor="let n of [0,1,2,3,4]">
+        <h6>Jean
+          <app-stars></app-stars>
+        </h6>
+        <p class="mt-0">Fait en 10 mins !</p>
+      </div>
+
+    </div>
   </div>
-</div>
+</ng-template>

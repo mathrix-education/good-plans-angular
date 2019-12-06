@@ -7,6 +7,7 @@ import {GoodPlanComponent} from './components/good-plan/good-plan.component';
 import {AppComponent} from './components/app/app.component';
 import {FirstPageComponent} from './components/first-page/first-page.component';
 import {LoginComponent} from './components/login/login.component';
+import {GoodPlanModalComponent} from './components/good-plan-modal/good-plan-modal.component';
 
 export const routes: Route[] = [
 
@@ -35,6 +36,10 @@ export const routes: Route[] = [
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'modal',
+        component: GoodPlanModalComponent
       }
     ]
   },
