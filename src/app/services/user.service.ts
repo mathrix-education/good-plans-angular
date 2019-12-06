@@ -9,7 +9,7 @@ import {HttpClient} from '@angular/common/http';
 export class UserService extends Endpoint<User> {
 
   constructor(http: HttpClient, @Inject(BaseUrl) url) {
-    super(http, url, 'user');
+    super(http, url, 'users');
   }
 
   read(id: any, options?: ReadOptions<User>): any {

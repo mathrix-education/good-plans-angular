@@ -20,7 +20,7 @@ export class AuthenticationService {
   }
 
   isLogged() {
-    return localStorage.getItem(this.authToken) !== undefined;
+    return localStorage.getItem(this.authToken) !== null && localStorage.getItem(this.authToken) !== undefined;
   }
 
   logout() {
@@ -32,10 +32,11 @@ export class AuthenticationService {
   login(body: { email: string, password: string }) {
     return this.htp.post(`${this.baseUrl}/auth/login`, body).pipe(tap((dataResponse: DataResponse<{ token: string }>) => {
         localStorage.setItem(this.authToken, dataResponse.data.token);
+        localStorage.setItem('userId', this.jwt.decodeToken(dataResponse.data.token).sub);
       }),
-      switchMap((token: DataResponse<{ token: string }>) => {
-        console.log(this.jwt.decodeToken());
-        return this.userService.read(this.jwt.decodeToken().id);
+      switchMap((response: DataResponse<{ token: string }>) => {
+        return this.userService.read(this.jwt.decodeToken(response.data.token).sub);
       }));
   }
+
 }

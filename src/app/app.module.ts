@@ -19,7 +19,9 @@ import {StarsComponent} from './components/stars/stars.component';
 import {AuthenticationService} from './services/authentication.service';
 import {FilterComponent} from './components/filter/filter.component';
 import {AuthTokenName, BaseUrl, IridiumModule} from '@mathrix-education/iridium';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {BearerTokenInterceptor} from './services/interceptor';
+import {LoginResolver} from '../resolvers/login.resolver';
 import { HeaderIconComponent } from './components/header-icon/header-icon.component';
 
 
@@ -45,12 +47,14 @@ import { HeaderIconComponent } from './components/header-icon/header-icon.compon
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
-    HttpClientModule
+    IridiumModule
   ],
   providers: [
     AuthenticationService,
+    LoginResolver,
     {provide: BaseUrl, useValue: 'https://dev.api.good-plans.mathrix.fr'},
-    {provide: AuthTokenName, useValue: 'good-plan'}
+    {provide: AuthTokenName, useValue: 'good-plan'},
+    {provide: HTTP_INTERCEPTORS, useClass: BearerTokenInterceptor, multi: true}
   ],
   bootstrap: [RootComponent]
 })
