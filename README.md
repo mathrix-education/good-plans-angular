@@ -1,27 +1,33 @@
-# GoodPlansAngular
+# Good Plans Angular
+This repo is the client of the project "Good Plans" a project made by
+Mathrix for the "Nuit de l'info", a French coding event.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+It is based on Angular 8 and heavily relies on
+[@clr/angular](https://www.npmjs.com/package/@clr/angular) for the UI
+integration.
 
-## Development server
+It coupled with a REST API, which you can found at :
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- [dev.api.good-plans.mathrix.fr] (development API)
+- [api.good-plans.mathrix.fr] (production API)
 
-## Code scaffolding
+To build the Docker image, you have to first build the Angular app. To
+do so, run:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+npm install # install the Node dependencies
+ng build --configuration=dev # or master, if you want to use our prod API 
+```
 
-## Build
+Then, you can build the Docker image with:
+```bash
+docker build -t good-plans-angular:latest .
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Then, serve the app with:
+```bash
+docker run good-plans-angular:latest
+```
 
-## Running unit tests
+You can customize the port by passing the `PORT` environment variable.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
