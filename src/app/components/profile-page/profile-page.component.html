@@ -7,7 +7,7 @@
     <clr-accordion-panel>
       <clr-accordion-title fxLayoutAlign="stretch center">
         <clr-icon shape="heart" class="mr-1"></clr-icon>
-        Tu as une bonne assurance maladie ? Une bonne mutuelle ?
+        Tu as les aides au logement ?
       </clr-accordion-title>
       <clr-accordion-content *clrIfExpanded>
         <ng-content *ngTemplateOutlet="cards"></ng-content>
@@ -20,7 +20,9 @@
         Envie d'une bourse pour tes études ?
       </clr-accordion-title>
       <clr-accordion-content *clrIfExpanded>
-        <ng-content *ngTemplateOutlet="cards"></ng-content>
+        <div fxLayout="row" fxLayoutGap="20px" class="my-3">
+          <app-good-plan [mini]="true"  [plan]="plan" *ngFor="let plan of plans2"></app-good-plan>
+        </div>
       </clr-accordion-content>
     </clr-accordion-panel>
 
@@ -30,7 +32,9 @@
         Tu voyages en train ? En covoiturage ?
       </clr-accordion-title>
       <clr-accordion-content *clrIfExpanded>
-        <ng-content *ngTemplateOutlet="cards"></ng-content>
+        <div fxLayout="row" fxLayoutGap="20px" class="my-3">
+          <app-good-plan [mini]="true"  [plan]="plan" *ngFor="let plan of plans3"></app-good-plan>
+        </div>
       </clr-accordion-content>
     </clr-accordion-panel>
   </clr-accordion>
@@ -38,12 +42,12 @@
   <h3>Les bons plans du moment</h3>
 
   <div fxLayout.gt-xs="row" fxLayoutGap="20px">
-    <app-good-plan [mini]="true" [plan]="plan" *ngFor="let plan of plans"></app-good-plan>
+    <app-good-plan [mini]="true" [plan]="plan" *ngFor="let plan of plans4"></app-good-plan>
   </div>
 </div>
 
 <ng-template #cards>
   <div fxLayout="row" fxLayoutGap="20px" class="my-3">
-    <app-good-plan [mini]="true"  [plan]="plan" *ngFor="let plan of plans2"></app-good-plan>
+    <app-good-plan [mini]="true"  [plan]="plan" *ngFor="let plan of plans"></app-good-plan>
   </div>
 </ng-template>

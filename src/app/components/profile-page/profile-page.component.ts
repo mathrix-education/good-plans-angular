@@ -11,15 +11,22 @@ export class ProfilePageComponent implements OnInit {
 
   plans: Plan [];
   plans2: Plan[];
+  plans3: Plan[];
+  plans4: Plan[];
 
   constructor(private plansService: PlanService) {
-    this.plansService.list().subscribe(t => {
-      this.plans = t.data.slice(2);
-      this.plans2 = t.data.slice(3, 5);
-    });
+
   }
 
   ngOnInit() {
+    this.plansService.list().subscribe(t => {
+      console.log(t);
+      this.plans = [t.data[2]];
+      this.plans2 = [t.data[4], t.data[5]];
+      this.plans3 = [t.data[0]];
+      this.plans4 = [t.data[6], t.data[7]];
+      console.log(this);
+    });
   }
 
 }
