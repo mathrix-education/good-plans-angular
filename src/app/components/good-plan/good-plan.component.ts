@@ -10,7 +10,7 @@ import {Plan} from '../../model/plan';
 export class GoodPlanComponent implements OnInit {
   @Input() expanded = false;
   @Input() mini = false;
-  @Input() plan: Plan = {
+  @Input() plan: any = {
     title: 'La carte jeune',
     description: 'La carte jeune te permet d\'économiser 50% sur les trajets de train SNCF.',
   };
