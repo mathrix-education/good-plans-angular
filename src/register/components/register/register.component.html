@@ -1,0 +1,40 @@
+<div class="background">
+  <div class="full" fxLayout="column" fxLayoutAlign="space-around center">
+    <div>
+    <h3 class="text-center">{{steps[index].first}}</h3>
+    <h1 class="text-center">
+      {{steps[index].question}}
+    </h1>
+    </div>
+    <div *ngIf="!finished">
+      <form class="clr-form clr-form-compact">
+
+        <div fxFlex="start center" *ngIf="steps[index].field==='city'">
+          <button class="btn btn-primary" (click)="saveCity('paris')">
+            <clr-icon shape="map-marker" class="mr-1"></clr-icon>
+            Paris</button>
+          <button class="btn btn-primary" (click)="saveCity('grenoble')">
+            <clr-icon shape="map-marker" class="mr-1"></clr-icon>
+            Grenoble</button>
+        </div>
+
+
+        <form clrForm *ngIf="steps[index].field==='birth_date'">
+          <clr-date-container>
+            <input type="date" clrDate name="demo" [(ngModel)]="model.birth_date">
+          </clr-date-container>
+        </form>
+
+
+        <clr-input-container *ngIf="steps[index].field!='city' && steps[index].field!='birth_date'  ">
+          <label>
+            <input clrInput type="text" placeholder="Céline" [(ngModel)]="model[steps[index].field]" name="example"/>
+          </label>
+        </clr-input-container>
+      </form>
+    </div>
+
+    <button class="btn btn-block btn-primary" *ngIf="steps[index].field!=='city'"
+            (click)=" finished? register() : next()">{{finished ? 'Continuer' : 'Suivant'}}</button>
+  </div>
+</div>

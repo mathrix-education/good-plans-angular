@@ -1,0 +1,41 @@
+<div class="btn-group">
+  <button class="btn" (click)="toggleCities()">
+    <ng-container *ngIf="!selectedCity">
+      <clr-icon shape="map-marker"></clr-icon>
+      Ville
+    </ng-container>
+    <ng-container *ngIf="selectedCity">
+      <clr-icon [attr.shape]="selectedCity.icon"></clr-icon>
+      {{selectedCity.name}}
+    </ng-container>
+  </button>
+
+
+  <button class="btn" (click)="toggleCategory()">
+    <ng-container *ngIf="!selectedCategory">
+      <clr-icon shape="car"></clr-icon>
+      Catégorie
+    </ng-container>
+
+    <ng-container *ngIf="selectedCategory">
+      <clr-icon [attr.shape]="selectedCategory.icon"></clr-icon>
+      {{selectedCategory.name}}
+    </ng-container>
+  </button>
+</div>
+
+
+<section class="main-menu">
+
+  <div class="menu menu1" *ngIf="showMenuCities">
+    <div class="item" *ngFor="let city of cities" (click)="selectCity(city)">
+      <clr-icon [attr.shape]="city.icon" class="mr-1"></clr-icon>
+      {{city.name}}</div>
+  </div>
+  <div class="menu menu2" *ngIf="showMenuCategory" >
+    <div class="item" *ngFor="let category of categories" (click)="selectCategory(category)">
+      <clr-icon [attr.shape]="category.icon" class="mr-1"></clr-icon>
+      {{category.name}}</div>
+  </div>
+</section>
+

@@ -1,0 +1,26 @@
+.panel {
+  height: 500px;
+}
+
+.right {
+  max-width: 450px;
+}
+
+.card-review {
+  background: none;
+  border: none;
+}
+
+:host ::ng-deep .clr-control-container {
+  display: block;
+  textarea {
+    width: 100%;
+  }
+}
+
+textarea {
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border-color: lightgray;
+}

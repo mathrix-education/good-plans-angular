@@ -1,0 +1,48 @@
+<header class="header-6">
+  <div class="branding">
+    <a class="nav-link" [routerLink]="['/']">
+      <img class="logo" src="/assets/logo.png  " alt="Logo">
+      <span class="title">Bons plans</span>
+    </a>
+  </div>
+</header>
+
+<div class="main-container p-2" fxLayout="column" fxLayoutAlign="center center">
+  <h1 class="mb-8">Les bons plans sont partout, il suffit de les trouver.</h1>
+
+  <div fxLayout="column" fxLayoutAlign="stretch center">
+    <div class="p-2">
+      <app-good-plan *ngIf="plan" [plan]="plan" [mini]="true" [stopClick]="true"></app-good-plan>
+    </div>
+
+
+    <h2>La flemme de chercher ? On le fait pour toi !</h2>
+
+    <a class="btn btn-primary" [routerLink]="['/inscription']">Commencer</a>
+  </div>
+
+</div>
+
+
+<clr-modal [(clrModalOpen)]="opened">
+  <div class="modal-title">Login</div>
+  <div class="modal-body" fxLayoutAlign="center center">
+
+
+    <form clrForm>
+      <clr-input-container>
+        <input type="text" name="username" clrInput placeholder="email" [(ngModel)]="form.email"/>
+      </clr-input-container>
+
+      <clr-password-container>
+        <input type="password" name="password" clrPassword placeholder="Mot de passe" [(ngModel)]="form.password"/>
+      </clr-password-container>
+    </form>
+  </div>
+
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="opened = false">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="login()">Ok</button>
+  </div>
+</clr-modal>

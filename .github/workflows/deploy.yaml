@@ -1,0 +1,70 @@
+name: Quality Assessment
+on:
+  push:
+    branchs: ['*'] # Do not run on tags
+jobs:
+  build:
+    name: Build application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract git context
+        id: context
+        shell: bash
+        run: |
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          echo "##[set-output name=short_sha;]$(echo ${GITHUB_SHA:0:7})"
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Authenticate Docker Agent
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Install dependencies
+        run: npm install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
+      - name: Build project
+        run: npx ng build --configuration=${{ steps.context.outputs.branch }}
+      - name: Setup Google Cloud SDK
+        uses: mathrix-education/setup-gcloud@0.1.2
+        with:
+          project: ${{ secrets.GCLOUD_PROJECT }}
+          service-account-key: ${{ secrets.GCLOUD_AUTH }}
+          configure-docker: true
+      - name: Build Docker Image
+        run: docker build -t eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/good-plans-angular:${{ steps.context.outputs.short_sha }} .
+      - name: Push Docker Image to Google Cloud Container Registry
+        run: docker push eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/good-plans-angular:${{ steps.context.outputs.short_sha }}
+      - name: Push to DockerHub
+        run: |
+          docker tag \
+            eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/good-plans-angular:${{ steps.context.outputs.short_sha }} \
+            mathrix/good-plans-angular:${{ steps.context.outputs.short_sha }}
+          docker push mathrix/good-plans-angular:${{ steps.context.outputs.short_sha }}
+  deploy:
+    name: Deploy Docker image on Google Cloud Run
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract git context
+        id: context
+        shell: bash
+        run: |
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          echo "##[set-output name=short_sha;]$(echo ${GITHUB_SHA:0:7})"
+      - name: Setup Google Cloud SDK
+        uses: mathrix-education/setup-gcloud@0.1.2
+        with:
+          project: ${{ secrets.GCLOUD_PROJECT }}
+          service-account-key: ${{ secrets.GCLOUD_AUTH }}
+      - name: Deploy on Google Cloud Run
+        if: contains('master,dev,next', steps.extract_branch.outputs.branch)
+        run: |
+          gcloud run deploy good-plans-angular-${{ steps.context.outputs.branch }} \
+            --image eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/good-plans-angular:${{ steps.context.outputs.short_sha }} \
+            --platform=managed \
+            --region=europe-west1 \
+            --allow-unauthenticated

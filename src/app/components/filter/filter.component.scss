@@ -1,0 +1,39 @@
+
+::ng-deep clr-select-container {
+  margin-top: 0 !important;
+}
+
+.filter-container {
+  margin-bottom: 16px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.menu {
+  width: 200px;
+  background: white;
+  border: 1px solid lightgray;
+  position: absolute;
+  z-index: 1;
+}
+
+.item {
+  padding: 8px;
+  border-bottom: 1px solid lightgray;
+  cursor: pointer;
+
+  &:hover {
+    background: lightgray;
+  }
+}
+
+.main-menu {
+  position: relative;
+  .menu1 {
+    left: 0;
+  }
+
+  .menu2 {
+    right: 0;
+  }
+}

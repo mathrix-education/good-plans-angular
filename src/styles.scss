@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "./styles/scss/classes/padding.classes";
+@import "./styles/scss/classes/margin.classes";
+
+.text-center {
+  text-align: center;
+}
+
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.box {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.main-container {
+  min-height: 90vh;
+  height: auto;
+}

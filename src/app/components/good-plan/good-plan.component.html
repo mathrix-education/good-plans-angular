@@ -1,0 +1,93 @@
+<div class="card mt-0" [ngClass]="{mini: mini}" (click)="selectCard()">
+  <div class="card-header text-center" fxLayoutAlign="space-between center">
+    <div>{{plan.title}}</div>
+
+    <app-stars></app-stars>
+  </div>
+
+  <!-- card block title -->
+  <div class="card-block">
+    <div class="card-media-block">
+      <div fxLayout="column" fxLayoutAlign="stretch center">
+        <div class="card-media-image" fxLayoutAlign="center center">
+          <clr-icon [attr.shape]="category.icon" size="24"></clr-icon>
+        </div>
+      </div>
+      <div class="card-media-description">
+        <div>
+
+          {{plan?.description}}
+        </div>
+      </div>
+    </div>
+
+    <div class="card-text" fxLayoutAlign="space-between" *ngIf="!mini">
+      <span class="card-media-text">
+          <clr-icon shape="clock"></clr-icon>
+          Inscrit en 20 mins
+
+      </span>
+    </div>
+  </div>
+
+
+  <div class="card-footer" *ngIf="!expanded && !mini">
+    <a class="btn btn-sm btn-link" [routerLink]="['/app/modal']">ça m'intéresse</a>
+  </div>
+
+  <div *ngIf="expanded">
+    <ng-content *ngTemplateOutlet="requirements"></ng-content>
+    <ng-content *ngTemplateOutlet="institution"></ng-content>
+    <ng-content *ngTemplateOutlet="description"></ng-content>
+  </div>
+
+
+</div>
+
+<ng-template #requirements>
+  <div class="card-block">
+    <div class="card-title">
+      Conditions d'obtention
+    </div>
+    <div class="card-text">
+
+      <span class="label label-info">jusqu'à 27 ans inclus</span>
+      <!--<span class="label label-success">Pas de condtion de ressources</span>-->
+      <span class="label label-warning">Valide toute l'année</span>
+    </div>
+  </div>
+
+
+</ng-template>
+
+<ng-template #institution>
+  <div class="card-block">
+    <div class="card-title">
+      Posté par
+    </div>
+    <div class="card-text" fxLayoutAlign="space-between center">
+      <div>{{plan?.institution?.name}}</div>
+      <div class="category" (click)="goToCategory()">
+        <clr-icon shape="car"></clr-icon>
+        Transport
+      </div>
+    </div>
+  </div>
+
+
+</ng-template>
+
+<ng-template #description>
+  <div class="card-block">
+    <div class="card-title">
+      Description
+    </div>
+    <div class="card-text">
+      {{plan?.description}}
+    </div>
+  </div>
+
+
+</ng-template>
+
+
