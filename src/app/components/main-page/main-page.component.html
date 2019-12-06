@@ -1,4 +1,7 @@
-<app-filter></app-filter>
-<div class="main" gdColumns="auto auto auto" gdGap="16px">
-  <app-good-plan [mini]="true" *ngFor="let n of [0,1,2,3]"></app-good-plan>
+<div fxLayout="column" fxLayoutAlign="stretch center">
+
+  <app-filter class="mb-5"></app-filter>
+  <div class="main" gdColumns="auto auto auto" gdGap="16px">
+    <app-good-plan [mini]="true" *ngFor="let n of [0,1,2,3]"></app-good-plan>
+  </div>
 </div>

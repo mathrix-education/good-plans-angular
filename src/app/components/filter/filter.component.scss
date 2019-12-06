@@ -10,6 +10,30 @@
 }
 
 .menu {
+  width: 200px;
+  background: white;
+  border: 1px solid lightgray;
+  position: absolute;
+  z-index: 1;
+}
+
+.item {
   padding: 8px;
-  border: 1px solid;
+  border-bottom: 1px solid lightgray;
+  cursor: pointer;
+
+  &:hover {
+    background: lightgray;
+  }
+}
+
+.main-menu {
+  position: relative;
+  .menu1 {
+    left: 0;
+  }
+
+  .menu2 {
+    right: 0;
+  }
 }
