@@ -10,6 +10,7 @@ import {Plan} from '../../model/plan';
 export class GoodPlanComponent implements OnInit {
   @Input() expanded = false;
   @Input() mini = false;
+  @Input() stopClick = false;
   @Input() plan: any = {
     title: 'La carte jeune',
     description: 'La carte jeune te permet d\'économiser 50% sur les trajets de train SNCF.',
@@ -30,8 +31,9 @@ export class GoodPlanComponent implements OnInit {
   }
 
   selectCard() {
-    console.log('select card');
+    if(!this.stopClick) {
     this.router.navigate(['/app/modal']);
+    }
   }
 
 }

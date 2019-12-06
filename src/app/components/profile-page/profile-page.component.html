@@ -37,7 +37,7 @@
 
   <h3>Les bons plans du moment</h3>
 
-  <div fxLayout="row" fxLayoutGap="20px">
+  <div fxLayout.gt-xs="row" fxLayoutGap="20px">
     <app-good-plan [mini]="true" *ngFor="let n of [0,1,2]"></app-good-plan>
   </div>
 </div>
