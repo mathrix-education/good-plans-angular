@@ -11,6 +11,7 @@ It coupled with a REST API, which you can found at :
 - [dev.api.good-plans.mathrix.fr] (development API)
 - [api.good-plans.mathrix.fr] (production API)
 
+## Build the Docker container
 To build the Docker image, you have to first build the Angular app. To
 do so, run:
 
@@ -31,3 +32,12 @@ docker run good-plans-angular:latest
 
 You can customize the port by passing the `PORT` environment variable.
 
+## Deployment
+The application is deployed with GitHub Actions, the official GitHub
+solution for CI/CD.
+You choose to deploy our app on [Google Cloud Run][cloud-run] which is
+a simple but very flexible solution to run stateless web containers.
+
+You can find the complete pipeline in [.github/workflows/deploy.yaml].
+
+[cloud-run]: https://cloud.google.com/run/
