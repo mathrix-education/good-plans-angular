@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {Plan} from '../../model/plan';
 
 @Component({
   selector: 'app-good-plan',
@@ -9,6 +10,7 @@ import {Router} from '@angular/router';
 export class GoodPlanComponent implements OnInit {
   @Input() expanded = false;
   @Input() mini = false;
+  @Input() plan: Plan;
 
   title = 'La carte jeune te permet d\'économiser 50% sur les trajets de train SNCF.';
 
@@ -27,7 +29,6 @@ export class GoodPlanComponent implements OnInit {
   }
 
   selectCard() {
-    console.log('select card');
     this.router.navigate(['/app/modal']);
   }
 

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -7,7 +7,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent {
-  filter = {city: '', category: 'santé'};
+  @Output() filter = new EventEmitter();
+  filterInternal = {city: '', category: 'santé'};
 
   categories = [
     {name: 'Santé', icon: 'heart'},
