@@ -11,14 +11,14 @@ export class StarsComponent implements OnInit {
   @Input() size;
   @Input() numbers = true;
 
-  randomNumber = Math.floor(Math.random() * 20, 0) + 12;
+  randomNumber = Math.floor(Math.random() * 20) + 12;
   constructor() { }
 
   ngOnInit() {
   }
 
   getGrade() {
-    return Math.floor(Math.random() * 2 + 4, 0);
+    return Math.floor(Math.random() * 2 + 4);
   }
 
   mouseOver(n) {

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {PlanService} from '../../services/plan.service';
+import {Plan} from '../../model/plan';
 
 @Component({
   selector: 'app-profile-page',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePageComponent implements OnInit {
 
-  constructor() { }
+  plans: Plan [];
+  plans2: Plan[];
+
+  constructor(private plansService: PlanService) {
+    this.plansService.list().subscribe(t => {
+      this.plans = t.data.slice(2);
+      this.plans2 = t.data.slice(3, 5);
+    });
+  }
 
   ngOnInit() {
   }

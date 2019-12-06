@@ -21,7 +21,6 @@ import {FilterComponent} from './components/filter/filter.component';
 import {AuthTokenName, BaseUrl, IridiumModule} from '@mathrix-education/iridium';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {BearerTokenInterceptor} from './services/interceptor';
-import {LoginResolver} from '../resolvers/login.resolver';
 import { HeaderIconComponent } from './components/header-icon/header-icon.component';
 import { TechnologiesComponent } from './components/technologies/technologies.component';
 
@@ -53,7 +52,6 @@ import { TechnologiesComponent } from './components/technologies/technologies.co
   ],
   providers: [
     AuthenticationService,
-    LoginResolver,
     {provide: BaseUrl, useValue: 'https://dev.api.good-plans.mathrix.fr'},
     {provide: AuthTokenName, useValue: 'good-plan'},
     {provide: HTTP_INTERCEPTORS, useClass: BearerTokenInterceptor, multi: true}

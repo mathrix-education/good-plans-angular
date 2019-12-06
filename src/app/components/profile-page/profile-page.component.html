@@ -1,6 +1,6 @@
 <div class="main" fxLayout="column" fxLayoutAlign="stretch center">
   <h1 class="mb-8 text-center">Bienvenue Jake,<br/>
-  prêt pour la chasse aux bons plans ?</h1>
+    prêt pour la chasse aux bons plans ?</h1>
   <h3>Les inmanquables pour démarrer</h3>
 
   <clr-accordion>
@@ -38,12 +38,12 @@
   <h3>Les bons plans du moment</h3>
 
   <div fxLayout.gt-xs="row" fxLayoutGap="20px">
-    <app-good-plan [mini]="true" *ngFor="let n of [0,1,2]"></app-good-plan>
+    <app-good-plan [mini]="true" [plan]="plan" *ngFor="let plan of plans"></app-good-plan>
   </div>
 </div>
 
 <ng-template #cards>
   <div fxLayout="row" fxLayoutGap="20px" class="my-3">
-    <app-good-plan [mini]="true" *ngFor="let n of [0,1,2]"></app-good-plan>
+    <app-good-plan [mini]="true"  [plan]="plan" *ngFor="let plan of plans2"></app-good-plan>
   </div>
 </ng-template>

@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import {BaseUrl, Endpoint, ListOptions, ReadOptions} from '@mathrix-education/iridium';
+import {BaseUrl, Endpoint, ReadOptions} from '@mathrix-education/iridium';
 import {Plan} from '../model/plan';
 import {HttpClient} from '@angular/common/http';
 
@@ -7,6 +7,8 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class PlanService extends Endpoint<Plan> {
+
+  selectedPlan: Plan;
 
 
   constructor(http: HttpClient, @Inject(BaseUrl) url) {
@@ -17,7 +19,7 @@ export class PlanService extends Endpoint<Plan> {
     return this.defaultRead(id, options);
   }
 
-  list(options?: ListOptions<Plan>): any {
-    return this.defaultList(options);
+  list(): any {
+    return this.defaultList({expand: ['institution']});
   }
 }
