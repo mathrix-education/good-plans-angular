@@ -23,6 +23,7 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/h
 import {BearerTokenInterceptor} from './services/interceptor';
 import {LoginResolver} from '../resolvers/login.resolver';
 import { HeaderIconComponent } from './components/header-icon/header-icon.component';
+import { TechnologiesComponent } from './components/technologies/technologies.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { HeaderIconComponent } from './components/header-icon/header-icon.compon
     LoginComponent,
     StarsComponent,
     FilterComponent,
-    HeaderIconComponent
+    HeaderIconComponent,
+    TechnologiesComponent
   ],
   imports: [
     BrowserModule,

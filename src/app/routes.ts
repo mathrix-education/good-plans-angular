@@ -9,6 +9,7 @@ import {FirstPageComponent} from './components/first-page/first-page.component';
 import {LoginComponent} from './components/login/login.component';
 import {GoodPlanModalComponent} from './components/good-plan-modal/good-plan-modal.component';
 import {LoginResolver} from '../resolvers/login.resolver';
+import {TechnologiesComponent} from './components/technologies/technologies.component';
 
 export const routes: Route[] = [
 
@@ -41,7 +42,11 @@ export const routes: Route[] = [
       {
         path: 'modal',
         component: GoodPlanModalComponent
-      }
+      },
+      {
+        path: 'technologies',
+        component: TechnologiesComponent
+      },
     ]
   },
   {path: '', redirectTo: 'app', pathMatch: 'full'}
