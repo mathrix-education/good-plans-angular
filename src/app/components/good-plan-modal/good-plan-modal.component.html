@@ -29,20 +29,21 @@
 
   <section *ngSwitchCase="2" fxLayout="column" fxLayoutAlign="center center" class="panel">
 
-      <h1 class="mb-5">Donne ton avis</h1>
+      <h1 class="mb-5">Et un bon plan de plus!</h1>
+      <h1 class="mb-5">Allez, donne-nous ton avis, c'était simple ?</h1>
 
-      <app-stars [size]="40" (click)="step = 3"></app-stars>
+      <app-stars [size]="40" (click)="step = 3" [numbers]="false"></app-stars>
   </section>
 
   <section *ngSwitchCase="3" fxLayout="column" fxLayoutAlign="space-around center" class="panel">
 
     <div class="box">
 
-      <h1 class="mb-5">Encore une remarques ?</h1>
+      <h1 class="mb-5 text-center">Quelque chose à ajouter pour aider les autres ?</h1>
 
-    <form class="clr-form">
+    <form class="clr-form p-0">
       <div class="clr-control-container">
-        <textarea placeholder="Si tu as eu des difficultés à le faire"
+        <textarea placeholder="C'est facile d'obtenir cette bourse, fonçez !"
                   [(ngModel)]="remark" name="description"
                   rows="5"
                   required></textarea>
@@ -50,8 +51,9 @@
     </form>
 
 
-      <div fxLayoutAlign="space-between center">
-      <button class="btn btn-secondary btn-primary">Non ça ira</button>
+      <div fxLayoutAlign="flex-end">
+      <button class="btn btn-link">Peut-être plus tard</button>
+      <button class="btn btn-secondary btn-primary mr-0">Ajouter un message</button>
       </div>
 
     </div>

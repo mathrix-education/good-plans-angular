@@ -1,16 +1,22 @@
-<div class="card mt-0" [ngClass]="{mini: mini}">
+<div class="card mt-0" [ngClass]="{mini: mini}" (click)="selectCard()">
   <div class="card-header text-center" fxLayoutAlign="space-between center">
-    La carte jeune
+    <div>La carte jeune</div>
 
     <app-stars></app-stars>
   </div>
 
   <!-- card block title -->
-  <div class="card-block" >
+  <div class="card-block">
     <div class="card-media-block">
-      <img class="card-media-image">
+      <div fxLayout="column" fxLayoutAlign="stretch center">
+        <img class="card-media-image">
+      </div>
       <div class="card-media-description">
-        <div>{{title}}</div>
+        <div>
+
+          {{title}}
+          <clr-icon shape="car"></clr-icon>
+        </div>
       </div>
     </div>
 
@@ -80,9 +86,6 @@
       ipsumLorem ipsumLorem ipsumLorem ipsum
     </div>
   </div>
-
-
-
 
 
 </ng-template>
