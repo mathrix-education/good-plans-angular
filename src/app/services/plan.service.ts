@@ -10,7 +10,7 @@ export class PlanService extends Endpoint<Plan> {
 
 
   constructor(http: HttpClient, @Inject(BaseUrl) url) {
-    super(http, url, 'user');
+    super(http, url, 'plans');
   }
 
   read(id: any, options?: ReadOptions<Plan>): any {

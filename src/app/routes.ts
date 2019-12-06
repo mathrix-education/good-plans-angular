@@ -8,11 +8,12 @@ import {AppComponent} from './components/app/app.component';
 import {FirstPageComponent} from './components/first-page/first-page.component';
 import {LoginComponent} from './components/login/login.component';
 import {GoodPlanModalComponent} from './components/good-plan-modal/good-plan-modal.component';
+import {LoginResolver} from '../resolvers/login.resolver';
 
 export const routes: Route[] = [
 
   {
-    path: '', component: FirstPageComponent
+    path: '', component: FirstPageComponent, resolve: {data: LoginResolver}
   },
   {
     path: 'inscription',
